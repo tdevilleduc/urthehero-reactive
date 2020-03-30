@@ -16,6 +16,16 @@
 
 	<properties>
 		<java.version>11</java.version>
+
+		<jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
+		<sonar.exclusions>**/generated-sources, **/pom.xml</sonar.exclusions>
+		<sonar.coverage.jacoco.xmlReportPaths>
+			${project.build.directory}/site/jacoco/jacoco.xml,${project.build.directory}/site/jacoco-it/jacoco.xml
+		</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.language>kotlin</sonar.language>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+		<sonar.login>2eaa7242c8a258a69e32783194c783e63d6e7793</sonar.login>
 	</properties>
 
 	<dependencies>
@@ -40,6 +50,7 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -50,5 +61,20 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>local-sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.projectKey>${project.artifactId}</sonar.projectKey>
+				<sonar.projectName>${project.name}</sonar.projectName>
+				<sonar.login>2eaa7242c8a258a69e32783194c783e63d6e7793</sonar.login>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
