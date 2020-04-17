@@ -1,0 +1,17 @@
+
+# webClient resource uri
+resource-uri:
+
+# swagger-ui custom path
+springdoc.swagger-ui.path: /swagger-ui.html
+
+#togglz.features.PERSON_FEATURE.enabled=false
+#togglz.features.PAGE_FEATURE.enabled=false
+
+# PostgreSQL DataSource settings
+datasource:
+  host: localhost
+  port: 5432
+  database: test
+  username: testuser
+  password: test123
